@@ -26,7 +26,7 @@ WITH rank_order AS (
   SELECT customer_id,
   	order_date,
   	product_name,
-  	dense_rank() OVER (PARTITION BY customer_id ORDER BY 		order_date) AS rank
+  	dense_rank() OVER (PARTITION BY customer_id ORDER BY order_date) AS rank
   FROM sales JOIN menu
   	ON sales.product_id = menu.product_id
   )
