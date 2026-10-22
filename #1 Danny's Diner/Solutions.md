@@ -10,6 +10,7 @@ FROM sales JOIN menu
 GROUP BY customer_id
 ORDER BY customer_id;
 ```
+<img width="932" height="140" alt="image" src="https://github.com/user-attachments/assets/d6de4cf6-17ac-4c02-a346-503f24c3dec4" />
 
 2. How many days has each customer visited the restaurant?
 ```sql
@@ -19,6 +20,7 @@ FROM sales
 GROUP BY customer_id
 ORDER BY customer_id;
 ```
+<img width="931" height="141" alt="image" src="https://github.com/user-attachments/assets/7365f263-1545-4140-8463-2100c3bfd6a0" />
 
 3. What was the first item from the menu purchased by each customer?
 ```sql
@@ -35,6 +37,7 @@ FROM rank_order
 WHERE rank = 1
 GROUP BY customer_id, product_name;
 ```
+<img width="930" height="170" alt="image" src="https://github.com/user-attachments/assets/35d59d29-13ce-43b7-9a5c-4bd7024eae82" />
 
 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 ```sql
@@ -45,6 +48,7 @@ FROM sales JOIN menu
 GROUP BY product_name
 ORDER BY product_purchases DESC LIMIT 1;
 ```
+<img width="929" height="71" alt="image" src="https://github.com/user-attachments/assets/393ab2fa-337f-4f47-9ad3-f42571565bf5" />
 
 5. Which item was the most popular for each customer?
 ```sql
@@ -61,6 +65,7 @@ SELECT customer_id, product_name, item_count
 FROM rank_item
 WHERE rank = 1;
 ```
+<img width="930" height="205" alt="image" src="https://github.com/user-attachments/assets/a62d58c6-fb83-4a95-842c-30c52b0bb9c4" />
 
 6. Which item was purchased first by the customer after they became a member?
 ```sql
@@ -78,6 +83,7 @@ FROM member_join JOIN menu
 WHERE rank = 1
 GROUP BY customer_id, product_name;
 ```
+<img width="933" height="105" alt="image" src="https://github.com/user-attachments/assets/7a95b6a2-2396-4a05-853c-d59334cfcd8b" />
 
 7. Which item was purchased just before the customer became a member?
 ```sql
@@ -95,6 +101,7 @@ FROM before_join JOIN menu
 WHERE rank = 1
 GROUP BY customer_id, product_name;
 ```
+<img width="929" height="137" alt="image" src="https://github.com/user-attachments/assets/95d3f6ce-4df8-4425-b11c-b9fa061ab54d" />
 
 8. What is the total items and amount spent for each member before they became a member?
 ```sql
@@ -110,6 +117,7 @@ FROM sales
 GROUP BY sales.customer_id
 ORDER BY sales.customer_id ASC;
 ```
+<img width="928" height="107" alt="image" src="https://github.com/user-attachments/assets/20718f0a-80ae-4a5d-9b5d-9065f5b0c7dd" />
 
 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 ```sql
@@ -129,6 +137,7 @@ FROM points JOIN sales
 GROUP BY customer_id
 ORDER BY customer_id ASC;
 ```
+<img width="935" height="140" alt="image" src="https://github.com/user-attachments/assets/8923ba30-8da3-4a64-a6b2-8cc39255f898" />
 
 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 ```sql
@@ -154,6 +163,7 @@ FROM sales
 GROUP BY sales.customer_id
 ORDER BY sales.customer_id;
 ```
+<img width="933" height="106" alt="image" src="https://github.com/user-attachments/assets/8620ac1d-be51-40af-ae44-bdcda8732746" />
 
 Bonus 1. Join all the things
 ```sql
@@ -172,6 +182,7 @@ FROM sales
         ON sales.product_id = menu.product_id
 ORDER BY customer_id, order_date;
 ```
+<img width="933" height="537" alt="image" src="https://github.com/user-attachments/assets/402c13b5-aa1f-4e41-bcb3-15e3762e870d" />
 
 Bonus 2. Rank all the things
 ```sql
@@ -194,3 +205,4 @@ FROM sales
         ON sales.product_id = menu.product_id
 ORDER BY sales.customer_id, sales.order_date;
 ```
+<img width="931" height="539" alt="image" src="https://github.com/user-attachments/assets/617d7ca6-d87e-4960-a42e-971ab1a56201" />
