@@ -19,6 +19,8 @@ CREATE TEMPORARY TABLE customer_orders_temp AS
         order_time
     FROM customer_orders;
 ```
+<img width="934" height="503" alt="image" src="https://github.com/user-attachments/assets/470542b3-0446-4c48-8d27-0f41f2b25c87" />
+
 
 ### runner_orders Table
 ```sql
@@ -56,3 +58,4 @@ ALTER TABLE runner_orders_temp
     ALTER COLUMN duration TYPE INTEGER 
         USING (CASE WHEN duration = '' THEN 0 ELSE duration::INTEGER END);
 ```
+<img width="934" height="368" alt="image" src="https://github.com/user-attachments/assets/b1e9b84f-93fa-4923-89fb-ee6dda119736" />
