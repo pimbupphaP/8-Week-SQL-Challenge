@@ -29,7 +29,7 @@ All datasets exist within the `pizza_runner` database schema - be sure to includ
 - `pizza_toppings` : This table contains all of the `topping_name` values with their corresponding `topping_id` value.
 
 ## Case Study Questions
-- Part A. Pizza Metrics
+- [Part A. Pizza Metrics](#2 Pizza Runner/A. Pizza Metrics.md)
 - Part B. Runner and Customer Experience
 - Part C. Ingredient Optimisation
 - Part D. Pricing and Ratings
