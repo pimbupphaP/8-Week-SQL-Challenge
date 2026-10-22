@@ -59,9 +59,11 @@ ORDER BY pizza_count DESC LIMIT 1;
 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 ```sql
 SELECT customer_id,
-    COUNT(CASE WHEN exclusions != '' OR extras != '' THEN '1' END)
+    COUNT(CASE
+        WHEN exclusions != '' OR extras != '' THEN '1' END)
         AS changed_orders,
-    COUNT(CASE WHEN exclusions = '' AND extras = '' THEN '1' END)
+    COUNT(CASE
+        WHEN exclusions = '' AND extras = '' THEN '1' END)
         AS no_changes
 FROM customer_orders_temp 
     JOIN runner_orders_temp ON customer_orders_temp.order_id = runner_orders_temp.order_id
@@ -72,7 +74,8 @@ ORDER BY customer_id;
 
 8. How many pizzas were delivered that had both exclusions and extras?
 ```sql
-SELECT COUNT(CASE WHEN exclusions != '' AND extras != '' THEN '1' END)
+SELECT COUNT(CASE
+        WHEN exclusions != '' AND extras != '' THEN '1' END)
         AS exclusions_extras
 FROM customer_orders_temp 
 	JOIN runner_orders_temp ON customer_orders_temp.order_id = runner_orders_temp.order_id
