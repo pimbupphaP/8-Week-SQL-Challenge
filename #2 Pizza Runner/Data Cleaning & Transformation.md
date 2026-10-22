@@ -53,10 +53,11 @@ CREATE TEMPORARY TABLE runner_orders_temp AS
 ALTER TABLE runner_orders_temp
    ALTER COLUMN pickup_time TYPE TIMESTAMP 
       USING (CASE WHEN pickup_time = '' THEN NULL ELSE to_timestamp(pickup_time,'YYYY-MM-DD HH24:MI:SS') END),
-   ALTER COLUMN distance TYPE DOUBLE PRECISION 
-      USING (CASE WHEN distance = '' THEN 0.0 ELSE distance::DOUBLE PRECISION END),
+   ALTER COLUMN distance TYPE NUMERIC
+      USING (CASE WHEN distance = '' THEN 0.0 ELSE distance::NUMERIC END),
    ALTER COLUMN duration TYPE INTEGER 
       USING (CASE WHEN duration = '' THEN 0 ELSE duration::INTEGER END);
 ```
-<img width="935" height="369" alt="image" src="https://github.com/user-attachments/assets/c11d7c6a-d4ad-4498-b30f-64acc396ac11" />
+<img width="934" height="374" alt="image" src="https://github.com/user-attachments/assets/8f5721e2-42f6-4f46-8a32-cd78ad339068" />
+
 
