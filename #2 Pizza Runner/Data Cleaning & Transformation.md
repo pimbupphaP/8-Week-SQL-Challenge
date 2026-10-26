@@ -1,6 +1,6 @@
 # Case Study #2: Pizza Runner
 ## Data Cleaning & Transformation
-Link to [DB Fiddle](https://www.db-fiddle.com/f/7VcQKQwsS3CTkGRFG7vu98/4343) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/7VcQKQwsS3CTkGRFG7vu98/4344) to execute the queries shown below
 
 ### customer_orders Table
 ```sql
