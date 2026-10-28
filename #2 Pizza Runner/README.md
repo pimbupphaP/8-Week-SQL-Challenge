@@ -29,8 +29,8 @@ All datasets exist within the `pizza_runner` database schema - be sure to includ
 - `pizza_toppings` : This table contains all of the `topping_name` values with their corresponding `topping_id` value.
 
 ## Case Study Questions
-- [Part A. Pizza Metrics](https://github.com/pimbupphaP/8-Week-SQL-Challenge/blob/9930153f88c857ddd96653748ff19320898e0dcb/%232%20Pizza%20Runner/A.%20Pizza%20Metrics.md)
-- Part B. Runner and Customer Experience
-- Part C. Ingredient Optimisation
-- Part D. Pricing and Ratings
-- Part E. Bonus Questions
+- [Part A. Pizza Metrics](https://github.com/pimbupphaP/8-Week-SQL-Challenge/blob/06ed4c53ed64ebac5648847b12cd40182455755d/%232%20Pizza%20Runner/%23A.%20Pizza%20Metrics.md)
+- [Part B. Runner and Customer Experience](https://github.com/pimbupphaP/8-Week-SQL-Challenge/blob/06ed4c53ed64ebac5648847b12cd40182455755d/%232%20Pizza%20Runner/%23B.%20Runner%20%26%20Customer%20Experience.md)
+- [Part C. Ingredient Optimisation](https://github.com/pimbupphaP/8-Week-SQL-Challenge/blob/06ed4c53ed64ebac5648847b12cd40182455755d/%232%20Pizza%20Runner/%23C.%20Ingredient%20Optimisation.md)
+- [Part D. Pricing and Ratings](https://github.com/pimbupphaP/8-Week-SQL-Challenge/blob/06ed4c53ed64ebac5648847b12cd40182455755d/%232%20Pizza%20Runner/%23D.%20Pricing%20%26%20Ratings.md)
+- [Part E. Bonus Questions](https://github.com/pimbupphaP/8-Week-SQL-Challenge/blob/06ed4c53ed64ebac5648847b12cd40182455755d/%232%20Pizza%20Runner/%23E.%20Bonus%20Question.md)
