@@ -1,6 +1,6 @@
 # Case Study #2: Pizza Runner
 ## Part C. Ingredient Optimisation
-Link to [DB Fiddle](https://www.db-fiddle.com/f/7VcQKQwsS3CTkGRFG7vu98/4338) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/7VcQKQwsS3CTkGRFG7vu98/4344) to execute the queries shown below
 
 Creating temporary tables to extract extra and exclusions toppings 
 ```sql
