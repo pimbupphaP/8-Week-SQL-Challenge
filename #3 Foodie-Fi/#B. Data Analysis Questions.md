@@ -1,6 +1,6 @@
 # Case Study #3: Foodie-Fi
 ## Part B. Data Analysis Questions
-Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/805) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/806) to execute the queries shown below
 
 1. How many customers has Foodie-Fi ever had?
 ```sql
@@ -74,8 +74,9 @@ FROM subscriptions
 WITH after_trial_plans AS (
     SELECT customer_id,
         plan_id,
-        LEAD(plan_id) OVER (PARTITION BY customer_id ORDER BY plan_id) AS after_trial
+        LEAD(plan_name) OVER (PARTITION BY customer_id ORDER BY plan_id) AS after_trial
 	FROM subscriptions
+		JOIN plans USING(plan_id)
 )
 SELECT after_trial,
     COUNT(DISTINCT customer_id) AS customer_count,
@@ -85,7 +86,7 @@ WHERE after_trial IS NOT NULL
     AND plan_id = '0'
 GROUP BY after_trial;
 ```
-<img width="937" height="176" alt="image" src="https://github.com/user-attachments/assets/ee348c9d-28de-4325-bbc1-686fedca9a88" />
+<img width="770" height="175" alt="image" src="https://github.com/user-attachments/assets/dbe9ac69-285a-4917-868b-d4af166ffbdc" />
 
 7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
 ```sql
