@@ -1,6 +1,6 @@
 # Case Study #3: Foodie-Fi
 ## Part B. Data Analysis Questions
-Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/806) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/807) to execute the queries shown below
 
 1. How many customers has Foodie-Fi ever had?
 ```sql
