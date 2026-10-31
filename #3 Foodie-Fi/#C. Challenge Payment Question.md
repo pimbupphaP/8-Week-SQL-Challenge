@@ -8,6 +8,8 @@ The Foodie-Fi team wants you to create a new payments table for the year 2020 th
 - upgrades from pro monthly to pro annual are paid at the end of the current billing period and also starts at the end of the month period
 - once a customer churns they will no longer make payments
 ```sql
+DROP TABLE IF EXISTS payments;
+
 CREATE TEMPORARY TABLE payments AS 
 WITH RECURSIVE month_recur AS (
     SELECT customer_id,
@@ -44,15 +46,14 @@ SELECT customer_id,
     plan_name,
     amount,
     payment_date,
-    last_date
+    last_date,
+    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY payment_date) - 1 AS payment_order
 FROM month_recur
 WHERE EXTRACT(YEAR FROM payment_date) = 2020
 ORDER BY customer_id, payment_date, plan_id;
 ```
 
-
-
-`payments` Table limited to first 100 customers
+### `payments` Table limited to first 100 customers
 
 | customer_id | plan_id | plan_name     | amount | payment_date | last_date  |
 | ----------- | ------- | ------------- | ------ | ------------ | ---------- |
