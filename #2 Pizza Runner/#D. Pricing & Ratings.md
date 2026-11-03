@@ -2,7 +2,7 @@
 ## Part D. Pricing & Ratings
 Link to [DB Fiddle](https://www.db-fiddle.com/f/7VcQKQwsS3CTkGRFG7vu98/4344) to execute the queries shown below
 
-1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
+### 1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
 ```sql
 SELECT SUM(CASE
     WHEN customer_orders_temp.pizza_id = '1' THEN 12
@@ -13,7 +13,7 @@ FROM customer_orders_temp
 WHERE cancellation = '';
 ```
 
-2. What if there was an additional $1 charge for any pizza extras?
+### 2. What if there was an additional $1 charge for any pizza extras?
 ```sql
 SELECT SUM(CASE
         WHEN customer_orders_temp.pizza_id = '1' THEN 12
@@ -28,7 +28,7 @@ FROM customer_orders_temp
 WHERE cancellation = '';
 ```
 
-3. The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
+### 3. The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
 ```sql
 DROP TABLE IF EXISTS runner_ratings;
 CREATE TABLE runner_ratings (
@@ -52,7 +52,7 @@ INSERT INTO runner_ratings
 SELECT * FROM runner_ratings;
 ```
 
-4. Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries? customer_id, order_id, runner_id, rating, order_time, pickup_time, Time between order and pickup, Delivery duration, Average speed, Total number of pizzas
+### 4. Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries? customer_id, order_id, runner_id, rating, order_time, pickup_time, Time between order and pickup, Delivery duration, Average speed, Total number of pizzas
 ```sql
 SELECT customer_id,
     customer_orders_temp.order_id,
@@ -71,7 +71,7 @@ GROUP BY customer_orders_temp.order_id, customer_id, runner_orders_temp.runner_i
 ORDER BY customer_orders_temp.order_id;
 ```
 
-5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
+### 5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
 ```sql
 WITH pizza_revenue AS (
 SELECT SUM(CASE
