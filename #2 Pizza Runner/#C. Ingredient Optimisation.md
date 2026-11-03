@@ -2,7 +2,7 @@
 ## Part C. Ingredient Optimisation
 Link to [DB Fiddle](https://www.db-fiddle.com/f/7VcQKQwsS3CTkGRFG7vu98/4344) to execute the queries shown below
 
-Creating temporary tables to extract extra and exclusions toppings 
+### Creating temporary tables to extract extra and exclusions toppings 
 ```sql
 CREATE TEMPORARY TABLE extras_added AS
     SELECT order_id,
@@ -26,7 +26,7 @@ CREATE TEMPORARY TABLE exclusions_added AS
 <img width="934" height="206" alt="image" src="https://github.com/user-attachments/assets/4045475f-d59c-48a2-b05a-f3694f25a531" />
 
 
-1. What are the standard ingredients for each pizza?
+### 1. What are the standard ingredients for each pizza?
 ```sql
 WITH standard_toppings AS (
     SELECT pizza_id,
@@ -41,7 +41,7 @@ FROM standard_toppings
 ```
 <img width="935" height="503" alt="image" src="https://github.com/user-attachments/assets/8fbd7744-46e2-4f55-8213-4ce5e56a60c4" />
 
-2. What was the most commonly added extra?
+### 2. What was the most commonly added extra?
 ```sql
 SELECT topping_name,
     COUNT(extras_id) AS extras_count
@@ -52,7 +52,7 @@ ORDER BY extras_count DESC;
 ```
 <img width="936" height="139" alt="image" src="https://github.com/user-attachments/assets/f7eff385-b6a1-4a4e-b456-e53ab0ffd47d" />
 
-3. What was the most common exclusion?
+### 3. What was the most common exclusion?
 ```sql
 SELECT topping_name,
     COUNT(exclusions_id) AS exclusions_count
@@ -63,7 +63,7 @@ ORDER BY exclusions_count DESC;
 ```
 <img width="933" height="141" alt="image" src="https://github.com/user-attachments/assets/b95ab403-eb1c-49af-b8e0-f6af2e00e161" />
 
-4. Generate an order item for each record in the customers_orders table in the format of one of the following: 
+### 4. Generate an order item for each record in the customers_orders table in the format of one of the following: 
 - Meat Lovers
 - Meat Lovers - Exclude Beef
 - Meat Lovers - Extra Bacon
