@@ -127,6 +127,7 @@ FROM quarterly_churn;
   - Service and technical issues: platform was difficult to use, too many technical bugs
     - What technical difficulties have you had with using our platform?
     - What could we improve to make your experience on this platform smoother?
+  - Other reasons?
 - Are you moving to a competitor? If yes...
   - Which alternative did you choose?
   - Which plan or price tier did you subscribe to?
