@@ -1,15 +1,15 @@
 # Case Study #3: Foodie-Fi
 ## Part B. Data Analysis Questions
-Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/807) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/815) to execute the queries shown below
 
-1. How many customers has Foodie-Fi ever had?
+### 1. How many customers has Foodie-Fi ever had?
 ```sql
 SELECT COUNT(DISTINCT customer_id) AS customer_count
 FROM subscriptions;
 ```
 <img width="939" height="70" alt="image" src="https://github.com/user-attachments/assets/a697e002-3447-4b2a-9ff6-4d0002b54dce" />
 
-2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
+### 2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
 ```sql
 SELECT DATE_PART('month', start_date) AS trial_month,
     COUNT(*) AS trial_count
@@ -20,7 +20,7 @@ ORDER BY trial_month;
 ```
 <img width="935" height="442" alt="image" src="https://github.com/user-attachments/assets/3c7a523e-4653-4506-9ba5-ec0710c7cee1" />
 
-3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
+### 3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
 ```sql
 SELECT plan_name,
     COUNT(*) AS sub_count
@@ -32,7 +32,7 @@ ORDER BY plan_name;
 ```
 <img width="935" height="177" alt="image" src="https://github.com/user-attachments/assets/ecdadee7-7052-415c-b630-2564a9a9c463" />
 
-4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
+### 4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
 ```sql
 WITH churn_count AS (
     SELECT customer_id AS churn_customers
@@ -47,7 +47,7 @@ FROM subscriptions
 ```
 <img width="937" height="78" alt="image" src="https://github.com/user-attachments/assets/1f2efd77-0a6a-480b-9c1c-d675243df8c0" />
 
-5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
+### 5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
 ```sql
 WITH trial_churn AS (
     SELECT customer_id,
@@ -69,7 +69,7 @@ FROM subscriptions
 ```
 <img width="938" height="78" alt="image" src="https://github.com/user-attachments/assets/6dbf29a7-2ea1-4772-a597-a203e88257b0" />
 
-6. What is the number and percentage of customer plans after their initial free trial?
+### 6. What is the number and percentage of customer plans after their initial free trial?
 ```sql
 WITH after_trial_plans AS (
     SELECT customer_id,
@@ -88,7 +88,7 @@ GROUP BY after_trial;
 ```
 <img width="770" height="175" alt="image" src="https://github.com/user-attachments/assets/dbe9ac69-285a-4917-868b-d4af166ffbdc" />
 
-7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
+### 7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
 ```sql
 WITH next_plans AS (
     SELECT customer_id,
@@ -110,7 +110,7 @@ WITH next_plans AS (
 ```
 <img width="938" height="208" alt="image" src="https://github.com/user-attachments/assets/8aa2f5e9-9b4c-41f9-a03a-4e7c6545dc92" />
 
-8. How many customers have upgraded to an annual plan in 2020?
+### 8. How many customers have upgraded to an annual plan in 2020?
 ```sql
 SELECT COUNT(customer_id) AS customer_count
 FROM subscriptions
@@ -120,7 +120,7 @@ WHERE plan_id = 3
 <img width="936" height="72" alt="image" src="https://github.com/user-attachments/assets/bf78894b-7250-4a5b-a1ce-d244f1d3e284" />
 
 
-9. How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi?
+### 9. How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi?
 ```sql
 WITH plan_start AS (
     SELECT customer_id,
@@ -138,7 +138,7 @@ WHERE trial_start IS NOT NULL
 ```
 <img width="935" height="76" alt="image" src="https://github.com/user-attachments/assets/c6ca5211-0ff4-464a-8930-0a23a8eade26" />
 
-10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)
+### 10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)
 ```sql
 WITH RECURSIVE plan_start AS (
     SELECT customer_id,
@@ -169,7 +169,7 @@ ORDER BY start_period;
 ```
 <img width="935" height="439" alt="image" src="https://github.com/user-attachments/assets/b4ff5bde-78f8-452b-b52f-e008f6f5c21a" />
 
-11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
+### 11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
 ```sql
 WITH next_plans AS (
     SELECT customer_id,
