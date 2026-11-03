@@ -2,7 +2,7 @@
 ## Part B. Runner and Customer Experience
 Link to [DB Fiddle](https://www.db-fiddle.com/f/7VcQKQwsS3CTkGRFG7vu98/4344) to execute the queries shown below
 
-1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+### 1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
 ```sql
 SELECT DATE_PART('week', registration_date) AS registration_week,
     COUNT(runner_id) AS runner_count
@@ -11,7 +11,7 @@ GROUP BY DATE_PART('week', registration_date);
 ```
 <img width="935" height="140" alt="image" src="https://github.com/user-attachments/assets/af441036-b929-49d8-928c-7950e6b7c739" />
 
-2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+### 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 ```sql
 WITH runner_times AS (
     SELECT runner_id,
@@ -31,7 +31,7 @@ ORDER BY runner_id;
 ```
 <img width="935" height="140" alt="image" src="https://github.com/user-attachments/assets/f248d034-0e90-4d07-bb88-13be5b845c0e" />
 
-3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
+### 3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 ```sql
 WITH prep_time AS (
     SELECT customer_orders_temp.order_id,
@@ -53,7 +53,7 @@ ORDER BY order_count;
 ```
 <img width="935" height="138" alt="image" src="https://github.com/user-attachments/assets/934d2e51-938f-4790-88e3-3b1b482a49d3" />
 
-4. What was the average distance travelled for each customer?
+### 4. What was the average distance travelled for each customer?
 ```sql
 SELECT customer_id,
     ROUND(AVG(distance)) AS avg_km
@@ -65,14 +65,14 @@ ORDER BY customer_id;
 ```
 <img width="935" height="209" alt="image" src="https://github.com/user-attachments/assets/5ea3f3e1-3e81-4b78-a9e6-848993f62c6e" />
 
-5. What was the difference between the longest and shortest delivery times for all orders?
+### 5. What was the difference between the longest and shortest delivery times for all orders?
 ```sql
 SELECT MAX(duration) - MIN(duration) AS time_dif
 FROM runner_orders_temp;
 ```
 <img width="934" height="77" alt="image" src="https://github.com/user-attachments/assets/ef0c8ac9-ed7a-477c-8b30-d4378ce2e286" />
 
-6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+### 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 ```sql
 SELECT runner_id,
     order_id,
@@ -85,7 +85,7 @@ GROUP BY runner_id, order_id;
 ```
 <img width="935" height="302" alt="image" src="https://github.com/user-attachments/assets/81bf4652-b816-404c-92cb-aa9dda3a118a" />
 
-7. What is the successful delivery percentage for each runner?
+### 7. What is the successful delivery percentage for each runner?
 ```sql
 SELECT runner_id,
     COUNT(order_id) AS total_orders,
