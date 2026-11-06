@@ -1,6 +1,6 @@
 # Case Study #4: Data Bank
 ## Part A. Customer Nodes Exploration
-Link to [DB Fiddle](https://www.db-fiddle.com/f/2GtQz4wZtuNNu7zXH5HtV4/696) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/2GtQz4wZtuNNu7zXH5HtV4/698) to execute the queries shown below
 
 ### 1. How many unique nodes are there on the Data Bank system?
 ```sql
