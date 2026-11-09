@@ -1,6 +1,6 @@
 # Case Study #3: Foodie-Fi
 ## Part A. Customer Journey
-Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/805) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/rHJhRrXy5hbVBNJ6F6b9gJ/815) to execute the queries shown below
 
 Based off the 8 sample customers provided in the sample from the subscriptions table, write a brief description about each customer’s onboarding journey.
 ```sql
