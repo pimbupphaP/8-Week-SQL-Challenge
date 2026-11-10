@@ -2,6 +2,10 @@
 ## Part C. Before & After Analysis
 Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/621) to execute the queries shown below
 
+Taking the `week_date` value of `2020-06-15` as the baseline week where the Data Mart sustainable packaging changes came into effect.
+
+We would include all `week_date` values for `2020-06-15` as the start of the period after the change and the previous `week_date` values would be before
+
 ### 1. What is the total sales for the 4 weeks before and after 2020-06-15? What is the growth or reduction rate in actual values and percentage of sales?
 ```sql
 WITH before_after AS (
