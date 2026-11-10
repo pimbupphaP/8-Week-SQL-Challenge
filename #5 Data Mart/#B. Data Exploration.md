@@ -1,6 +1,6 @@
 # Case Study #5. Data Bank
 ## Part B. Data Exploration
-Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/620) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/622) to execute the queries shown below
 
 ### 1. What day of the week is used for each week_date value?
 ```sql
@@ -12,16 +12,16 @@ FROM clean_weekly_sales;
 ### 2. What range of week numbers are missing from the dataset?
 ```sql
 WITH RECURSIVE all_weeks AS (
-  SELECT 1 AS week
-  UNION ALL
-  SELECT week + 1 
-  FROM all_weeks
-  WHERE week + 1 <= 52
+    SELECT 1 AS week
+    UNION ALL
+    SELECT week + 1 
+    FROM all_weeks
+    WHERE week + 1 <= 52
 )
 SELECT DISTINCT week AS week,
-	week_number
+    week_number
 FROM all_weeks
-	LEFT JOIN clean_weekly_sales ON all_weeks.week = clean_weekly_sales.week_number
+    LEFT JOIN clean_weekly_sales ON all_weeks.week = clean_weekly_sales.week_number
 WHERE week_number IS NULL
 ORDER BY week;
 ```
@@ -30,7 +30,7 @@ ORDER BY week;
 ### 3. How many total transactions were there for each year in the dataset?
 ```sql
 SELECT calendar_year, 
-	TO_CHAR(SUM(transactions), 'fm999,999,999') AS total_transactions
+    TO_CHAR(SUM(transactions), 'fm999,999,999') AS total_transactions
 FROM clean_weekly_sales
 GROUP BY calendar_year
 ORDER BY calendar_year;
@@ -40,7 +40,7 @@ ORDER BY calendar_year;
 ### 4. What is the total sales for each region for each month?
 ```sql
 SELECT region,
-	month_number,
+    month_number,
     TO_CHAR(SUM(sales), 'fm999,999,999,999') AS total_sales
 FROM clean_weekly_sales
 GROUP BY region, month_number
@@ -52,7 +52,7 @@ Limiting results to first 3 regions
 ### 5. What is the total count of transactions for each platform
 ```sql
 SELECT platform,
-	COUNT(transactions) AS count_transactions
+    COUNT(transactions) AS count_transactions
 FROM clean_weekly_sales
 GROUP BY platform;
 ```
@@ -61,26 +61,26 @@ GROUP BY platform;
 ### 6. What is the percentage of sales for Retail vs Shopify for each month?
 ```sql
 WITH retail_sales AS (
-	SELECT month_number, 
-    	SUM(sales) AS retail_sales
+    SELECT month_number, 
+        SUM(sales) AS retail_sales
     FROM clean_weekly_sales
     WHERE platform = 'Retail'
     GROUP BY month_number
 ), shopify_sales AS (
-  SELECT month_number, 
-    	SUM(sales) AS shopify_sales
+    SELECT month_number, 
+        SUM(sales) AS shopify_sales
     FROM clean_weekly_sales
     WHERE platform = 'Shopify'
     GROUP BY month_number
 )
 SELECT month_number,
-	TO_CHAR(retail_sales, 'fm999,999,999,999') AS retail_sales,
+    TO_CHAR(retail_sales, 'fm999,999,999,999') AS retail_sales,
     TO_CHAR(shopify_sales, 'fm999,999,999,999') AS shopify_sales,
     TO_CHAR((retail_sales + shopify_sales), 'fm999,999,999,999') AS total_sales,
     ROUND(retail_sales::NUMERIC/(retail_sales + shopify_sales)*100.00, 1) AS retail_percent,
     ROUND(shopify_sales::NUMERIC/(retail_sales + shopify_sales)*100.00, 1) AS shopify_percent
 FROM retail_sales
-	JOIN shopify_sales USING(month_number)
+    JOIN shopify_sales USING(month_number)
 GROUP BY month_number, retail_sales, shopify_sales;
 ```
 <img width="939" height="269" alt="image" src="https://github.com/user-attachments/assets/7e7fd6b0-1908-41ca-8446-37915d882a8f" />
@@ -88,35 +88,35 @@ GROUP BY month_number, retail_sales, shopify_sales;
 ### 7. What is the percentage of sales by demographic for each year in the dataset?
 ```sql
 WITH couples AS (
-  SELECT calendar_year,
-  	SUM(sales) AS couples_sales
-  FROM clean_weekly_sales
-  WHERE demographic = 'Couples'
-  GROUP BY calendar_year
+    SELECT calendar_year,
+        SUM(sales) AS couples_sales
+    FROM clean_weekly_sales
+    WHERE demographic = 'Couples'
+    GROUP BY calendar_year
 ), families AS (
-  SELECT calendar_year,
-  	SUM(sales) AS families_sales
-  FROM clean_weekly_sales
-  WHERE demographic = 'Families'
-  GROUP BY calendar_year
+    SELECT calendar_year,
+        SUM(sales) AS families_sales
+    FROM clean_weekly_sales
+    WHERE demographic = 'Families'
+    GROUP BY calendar_year
 ), unknown AS (
-  SELECT calendar_year,
-  	SUM(sales) AS unknown_sales
-  FROM clean_weekly_sales
-  WHERE demographic = 'Unknown'
-  GROUP BY calendar_year
+    SELECT calendar_year,
+        SUM(sales) AS unknown_sales
+    FROM clean_weekly_sales
+    WHERE demographic = 'Unknown'
+    GROUP BY calendar_year
 )
 SELECT calendar_year,
-  TO_CHAR(couples_sales, 'fm999,999,999,999') AS couples_sales,
-  TO_CHAR(families_sales, 'fm999,999,999,999') AS families_sales,
-  TO_CHAR(unknown_sales, 'fm999,999,999,999') AS unknown_sales,
-  TO_CHAR((couples_sales + families_sales + unknown_sales), 'fm999,999,999,999') AS total_sales,
-  ROUND(couples_sales::NUMERIC/(couples_sales + families_sales + unknown_sales)*100.00, 1) AS couples_percent,
-  ROUND(families_sales::NUMERIC/(couples_sales + families_sales + unknown_sales)*100.00, 1) AS families_percent,
-  ROUND(unknown_sales::NUMERIC/(couples_sales + families_sales + unknown_sales)*100.00, 1) AS unknown_percent
+    TO_CHAR(couples_sales, 'fm999,999,999,999') AS couples_sales,
+    TO_CHAR(families_sales, 'fm999,999,999,999') AS families_sales,
+    TO_CHAR(unknown_sales, 'fm999,999,999,999') AS unknown_sales,
+    TO_CHAR((couples_sales + families_sales + unknown_sales), 'fm999,999,999,999') AS total_sales,
+    ROUND(couples_sales::NUMERIC/(couples_sales + families_sales + unknown_sales)*100.00, 1) AS couples_percent,
+    ROUND(families_sales::NUMERIC/(couples_sales + families_sales + unknown_sales)*100.00, 1) AS families_percent,
+    ROUND(unknown_sales::NUMERIC/(couples_sales + families_sales + unknown_sales)*100.00, 1) AS unknown_percent
 FROM couples
-  	JOIN families USING(calendar_year)
-  	JOIN unknown USING(calendar_year)
+    JOIN families USING(calendar_year)
+    JOIN unknown USING(calendar_year)
 GROUP BY calendar_year, couples_sales, families_sales, unknown_sales
 ORDER BY calendar_year;
 ```
@@ -125,25 +125,25 @@ ORDER BY calendar_year;
 ### 8. Which age_band and demographic values contribute the most to Retail sales?
 ```sql
 WITH total AS (
-  SELECT SUM(sales) AS total_sales
-  FROM clean_weekly_sales
-  WHERE platform = 'Retail'
+    SELECT SUM(sales) AS total_sales
+    FROM clean_weekly_sales
+    WHERE platform = 'Retail'
 )
-  SELECT age_band,
-  	demographic,
-  	TO_CHAR(SUM(sales), 'fm999,999,999,999') AS segment_sales,
+SELECT age_band,
+    demographic,
+    TO_CHAR(SUM(sales), 'fm999,999,999,999') AS segment_sales,
     ROUND(SUM(sales)::NUMERIC/(SELECT total_sales FROM total)*100.00, 1) AS contribution
-  FROM clean_weekly_sales
-  WHERE platform = 'Retail'
-  GROUP BY age_band, demographic
-  ORDER BY contribution DESC;
+FROM clean_weekly_sales
+WHERE platform = 'Retail'
+GROUP BY age_band, demographic
+ORDER BY contribution DESC;
 ```
 <img width="935" height="270" alt="image" src="https://github.com/user-attachments/assets/e5a6d074-2c13-4466-8fee-fb30f5748b73" />
 
 ### 9. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?
 ```sql
 SELECT calendar_year,
-	platform,
+    platform,
     ROUND(SUM(sales)/SUM(transactions)) AS avg_transactions
 FROM clean_weekly_sales
 GROUP BY calendar_year, platform
