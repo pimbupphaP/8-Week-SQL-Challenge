@@ -1,6 +1,6 @@
 # Case Study #5: Data Mart
 ## Part A. Data Cleansing Steps
-Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/618) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/622) to execute the queries shown below
 
 In a single query, perform the following operations and generate a new table in the `data_mart` schema named `clean_weekly_sales`:
 - Convert the `week_date` to a `DATE` format
