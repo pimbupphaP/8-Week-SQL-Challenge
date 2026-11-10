@@ -1,4 +1,4 @@
-# Case Study #5. Data Bank
+# Case Study #5. Data Mart
 ## Part C. Before & After Analysis
 Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/622) to execute the queries shown below
 
