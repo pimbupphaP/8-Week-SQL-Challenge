@@ -1,5 +1,5 @@
 # Case Study #6. Clique Bait
-## Part B. Digital Analysis
+## Part A. Digital Analysis
 Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/627) to execute the queries shown below
 
 ### 1. How many users are there?
