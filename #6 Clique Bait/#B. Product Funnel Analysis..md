@@ -1,6 +1,6 @@
 # Case Study #6. Clique Bait
 ## Part B. Product Funnel Analysis
-Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/630) to execute the queries shown below
+Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/636) to execute the queries shown below
 
 ### `product_funnel` Table
 Using a single SQL query - create a new output table which has the following details:
