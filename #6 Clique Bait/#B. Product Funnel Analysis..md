@@ -1,5 +1,5 @@
 # Case Study #6. Clique Bait
-## Part A. Digital Analysis
+## Part B. Product Funnel Analysis
 Link to [DB Fiddle](https://www.db-fiddle.com/f/jmnwogTsUE8hGqkZv9H7E8/630) to execute the queries shown below
 
 ### `product_funnel` Table
